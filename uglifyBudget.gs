@@ -69,13 +69,13 @@ function createAnnualSpending() {
         transactionsSheet.getRange(netCol+currentRow).setFormula("=" + depositCol+currentRow + "+" + withdrawCol+currentRow);
         transactionsSheet.getRange(cumsumCol+currentRow).setFormula("=" + netCol+currentRow + "+" + cumsumCol + (currentRow-1));
         if(row[3] == "Biweekly" || row[3] == "Pay Period")
-          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth(), startDate.getDate()+14*j));
+          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth(), startDate.getDate()+14*(j-1)));
         else if(row[3] == "Weekly")
-          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth(), startDate.getDate()+7*j));
+          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth(), startDate.getDate()+7*(j-1)));
         else if(row[3] == "Quarterly")
-          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth()+3*j, startDate.getDate()));
+          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth()+3*(j-1), startDate.getDate()));
         else if(row[3] == "Monthly" || row[3] == "Seasonal")
-          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth()+j, startDate.getDate()));
+          transactionsSheet.getRange(dateCol+currentRow).setValue(new Date(startDate.getYear(), startDate.getMonth()+(j-1), startDate.getDate()));
         else /*if(row[3] == "Annual" || row[3] == "One-Time")*/ {
           transactionsSheet.getRange(dateCol+currentRow).setValue( startDate );
         }
